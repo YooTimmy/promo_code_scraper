@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <table id="data" class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Code</th>
+        <th scope="col">Details</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in data %}
+        <tr>
+          <td>{{ row['Description']}}</td>
+          <td>{{ row['Code'] }}</td>
+          <td>{{ row['Details'] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
+
+{% block scripts %}
+  <script>
+    $(document).ready(function () {
+      $('#data').DataTable(
+       {
+       "sPaginationType": "full_numbers",
+       columns: [
+          {orderable : false},
+          null,
+          {orderable : false}
+          ]
+       }
+       );
+    });
+  </script>
+{% endblock %}
